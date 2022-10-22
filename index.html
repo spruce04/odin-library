@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <script src="./script.js"></script>
+    <link href="./style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="wrap">
+    <div class="header">
+        Library
+    </div>
+    <div class="main">
+        <div class="select">
+            <button class="button-6" role="button" id="formButton">Add a new book</button>
+        </div>
+    <div class="formWrap" id="bookForm">
+        <div class="innerForm">
+            <form>
+                <label for="title">Title</label>
+                <input id="title" type="text">
+                <label for="author">Author</label>
+                <input id="author" type="text">
+                <label for="page">Pagecount</label>
+                <input id="page" type="number" max="10000">
+                <label for="read">Have you read this book?</label>
+                <input id="read" type="checkbox">
+                <label for="image">Cover Image URL</label>
+                <input id="image" type="text">
+            </form>
+        </div>
+    </div>
+    </div>
+    <div class="footer">
+        <a href="https://github.com/spruce04/odin-library" target="_blank"><img src="./images/github.png" alt="github logo"></a>
+    </div>
+    </div>
+</body>
+</html>
