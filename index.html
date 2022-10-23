@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
-    <script src="./script.js"></script>
+    <script src="./script.js" defer></script>
     <link href="./style.css" rel="stylesheet">
 </head>
 <body>
@@ -13,23 +13,34 @@
     <div class="header">
         Library
     </div>
-    <div class="main">
+    <div class="main" id="main">
         <div class="select">
-            <button class="button-6" role="button" id="formButton">Add a new book</button>
+            <button id="formButton">Add a new book</button>
         </div>
     <div class="formWrap" id="bookForm">
         <div class="innerForm">
-            <form>
-                <label for="title">Title</label>
-                <input id="title" type="text">
-                <label for="author">Author</label>
-                <input id="author" type="text">
-                <label for="page">Pagecount</label>
-                <input id="page" type="number" max="10000">
-                <label for="read">Have you read this book?</label>
-                <input id="read" type="checkbox">
-                <label for="image">Cover Image URL</label>
-                <input id="image" type="text">
+            <form id="inputForm">
+            <ul class="title">
+                <li><label for="title">Title</label></li>
+                <li><input id="title" type="text"></li>
+            </ul>
+            <ul class="author">
+                <li><label for="author">Author</label></li>
+                <li><input id="author" type="text"></li>
+            </ul>
+            <div id="closeForm" class="close"><button>Close</button></div>
+            <ul class="page">
+                <li><label for="page">Pagecount</label></li>
+                <li><input id="page" type="number" max="10000"></li>
+            </ul>
+            <ul class="image">
+                <li><label for="image">Cover Image URL</label></li>
+                <li><input id="image" type="text"></li>
+            </ul>
+            <ul class="read">
+                <li><label for="read">Have you read this book?</label></li>
+                <li><input id="read" type="checkbox"></li>
+            </ul>
             </form>
         </div>
     </div>

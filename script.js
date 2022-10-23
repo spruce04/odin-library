@@ -1,6 +1,10 @@
 //dom selectors
-const formToggle = document.getElementById('formButton');
+const formToggle = document.getElementById("formButton");
 const bookForm = document.getElementById('bookForm');
+const input = document.getElementById("inputForm");
+const closeForm = document.getElementById("closeForm");
+const main = document.getElementById("main");
+
 
 let library = []; //this will store our books
 
@@ -18,5 +22,12 @@ function appendLibrary(book) {
     library.push(book);
 }
 
-
-const theHobbit = new Book('The Hobbit', 'Tolkein', 500, true, 'https://bookstr.com/wp-content/uploads/2019/12/Image-via-Amazon-1.jpg');
+formToggle.addEventListener("click", function() {
+    main.style.filter = "blur(2px)";
+    input.style.filter = "none"; //need to fix
+    bookForm.style.display = "block";
+})
+closeForm.addEventListener("click", function() {
+    bookForm.style.display = "none";
+    main.style.filter = "none";
+})
