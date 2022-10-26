@@ -9,24 +9,16 @@
     <link href="./style.css" rel="stylesheet">
 </head>
 <body>
-    <div class="wrap">
-    <div class="header">
-        Library
-    </div>
-    <div class="main" id="main">
-        <div class="select">
-            <button id="formButton">Add a new book</button>
-        </div>
     <div class="formWrap" id="bookForm">
         <div class="innerForm">
-            <form id="inputForm">
+            <div id="input">
             <ul class="title">
-                <li><label for="title">Title</label></li>
-                <li><input id="title" type="text"></li>
+                <li><label for="title">Title <span class="required">*</span></label></li>
+                <li><input id="title" type="text" required></li>
             </ul>
             <ul class="author">
-                <li><label for="author">Author</label></li>
-                <li><input id="author" type="text"></li>
+                <li><label for="author">Author <span class="required">*</span></label></li>
+                <li><input id="author" type="text" required></li>
             </ul>
             <div id="closeForm" class="close"><button>Close</button></div>
             <ul class="page">
@@ -38,12 +30,24 @@
                 <li><input id="image" type="text"></li>
             </ul>
             <ul class="read">
-                <li><label for="read">Have you read this book?</label></li>
-                <li><input id="read" type="checkbox"></li>
+                <li><label for="read">Read the book?</label></li>
+                <li><input id="read" type="checkbox" required></li>
             </ul>
-            </form>
+            <button class="submit" id="submit">Submit</button>
+        </div>
         </div>
     </div>
+    <div class="wrap">
+    <div class="header">
+        Library
+    </div>
+    <div class="main" id="main">
+        <div class="select">
+            <button id="formButton">Add a new book</button>
+        </div>
+        <div class="books" id="display">
+
+        </div>
     </div>
     <div class="footer">
         <a href="https://github.com/spruce04/odin-library" target="_blank"><img src="./images/github.png" alt="github logo"></a>
