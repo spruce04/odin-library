@@ -14,16 +14,16 @@
             <div id="input">
             <ul class="title">
                 <li><label for="title">Title <span class="required">*</span></label></li>
-                <li><input id="title" type="text" required></li>
+                <li><input id="title" type="text" required maxlength="32"></li>
             </ul>
             <ul class="author">
                 <li><label for="author">Author <span class="required">*</span></label></li>
-                <li><input id="author" type="text" required></li>
+                <li><input id="author" type="text" required maxlength="20"></li>
             </ul>
             <div id="closeForm" class="close"><button>Close</button></div>
             <ul class="page">
                 <li><label for="page">Pagecount</label></li>
-                <li><input id="page" type="number" max="10000"></li>
+                <li><input id="page" type="number"></li>
             </ul>
             <ul class="image">
                 <li><label for="image">Cover Image URL</label></li>
@@ -46,6 +46,7 @@
             <button id="formButton">Add a new book</button>
         </div>
         <div class="books" id="display">
+            
 
         </div>
     </div>

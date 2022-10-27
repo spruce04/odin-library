@@ -57,6 +57,11 @@ submit.addEventListener("click", function() {
     } else {
         author.style.border = '';
     }
+    //test if the pagecount value is too long
+    if(pageCount.value > 100000) {
+        alert('too many pages!');
+        return;
+    }
     //make the new book and add it to our library
     let book = new Book(title.value, author.value, pageCount.value, read.checked, coverImage.value);
     library.push(book);
@@ -88,32 +93,34 @@ function updateUI(lib) {
         //make author name
         let author = div.appendChild(document.createElement('div'));
         author.className = 'author';
-        author.textContent = `${lib[i]['author']}`;
+        author.textContent = `Author: ${lib[i]['author']}`;
         //make book title
         let title = div.appendChild(document.createElement('div'));
-        title.className = 'title';
+        title.className = 'bookTitle';
         title.textContent = `${lib[i]['title']}`;
         //make page count
         let count = div.appendChild(document.createElement('div'));
         count.className = 'pageCount';
-        count.textContent = `${lib[i]['pageCount']}`;
+        count.textContent = `Page Count: ${lib[i]['pageCount']}`;
         //determine if the book has been read
         let read = div.appendChild(document.createElement('div'));
         read.className = 'readStatus';
         if(lib[i]['read'] ==  true) {
             read.textContent = 'Read';
-            read.style.backgroundColor = 'lightgreen';
+            read.id = 'read';
         }
         else {
             read.textContent = 'Not read yet';
-            read.style.backgroundColor = 'yellow';
+            read.id = 'notRead';
         }
         //make toggle button
         let toggle = read.appendChild(document.createElement('button'));
         toggle.className = 'toggleStatus';
         toggle.textContent = 'Change Status';
-        //make delete button
-        let del = div.appendChild(document.createElement('button'));
+        //make delete button - extra div needed for 
+        let delBase = div.appendChild(document.createElement('div'));
+        delBase.className= 'delBase';
+        let del = delBase.appendChild(document.createElement('button'));
         del.className = 'delBtn';
         del.textContent = 'Delete this book';       
     };
@@ -123,36 +130,39 @@ function updateUI(lib) {
         delButtons[a].addEventListener("click", function() {
             lib.splice(a, 1);
             this.parentNode.remove();
-            updateUI(lib);
+            updateUI(lib);//we need to use recursion to update the index the buttons are linked to
         })
     }
-    //make status changing buttons work
     toggleButtons();
 }
 
-//remove input data
+/**
+ * This clears input data from our inputs
+*/
 function clearInput() {
     title.value = author.value = coverImage.value = '';
     read.checked = false;
     pageCount.value = null;
 }
 
-//make the status changing buttons functional
+/**
+ * This function makes our toggle status buttons work
+*/
 function toggleButtons() {
     let statButtons = document.getElementsByClassName("toggleStatus");
     for (let s = 0; s < statButtons.length; s++) {
         statButtons[s].addEventListener("click", function() {
-            if(this.parentNode.textContent == 'ReadChange Status') {
-                this.parentNode.innerHTML = 'Not read yet<button class="toggleStatus">Change Status</button>';
-                alert(JSON.stringify(this.parentNode));
-                //this.parentNode.style.backgroundColor = 'yellow';
-                toggleButtons();
+            if(this.parentNode.id == 'read') {
+                const parent = this.closest('#read');
+                parent.innerHTML = 'Not read yet<button class="toggleStatus">Change Status</button>';
+                parent.id = "notRead";
+                toggleButtons();//we need to use recursion to update the index the buttons are linked to
             } 
             else {
-                alert(JSON.stringify(this.parentNode));
-                this.parentNode.innerHTML = 'Read<button class="toggleStatus">Change Status</button>';
-                //this.parentNode.style.backgroundColor = 'lightgreen';
-                toggleButtons();
+                const parent = this.closest('#notRead');
+                parent.innerHTML = 'Read<button class="toggleStatus">Change Status</button>';
+                parent.id = "read";
+                toggleButtons();//we need to use recursion to update the index the buttons are linked to
             }
         })
     }
